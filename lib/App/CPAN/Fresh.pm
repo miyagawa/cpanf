@@ -96,6 +96,7 @@ sub do_inject {
     my $dir = File::Temp::tempdir(CLEANUP => 1);
     my $local = "$dir/$info->{dist}-$info->{version}.tar.gz";
 
+    print "Fetching $info->{url}\n";
     my $res = $self->new_ua->mirror($info->{url}, $local);
     if ($res->is_error) {
         croak "Fetching $info->{url} failed: ", $res->status_line;
