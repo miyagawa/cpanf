@@ -16,6 +16,12 @@ cpanf - Query and install CPAN modules realtime from the fresh mirror
   # install Module::Name from the fresh mirror
   cpanf Module::Name
 
+  # force install
+  cpanf -fi Module::Name
+
+  # test
+  cpanf -t Module::Name
+
   # list the recent uploads
   cpanf -l
 
