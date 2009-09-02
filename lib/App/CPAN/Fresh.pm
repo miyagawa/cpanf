@@ -88,11 +88,13 @@ sub inject {
     my($self, $dist) = @_;
     $dist =~ s/::/-/g;
 
-    my $res = $self->call("/search", { q => "$dist group:cpan" });
-    for my $entry (@{$res->{entries}}) {
-        my $info = $self->parse_entry($entry->{body}, $entry->{date}) or next;
-        if ($info->{dist} eq $dist) {
-            return $self->do_inject($info);
+    for my $method ([ "/feed/cpan" ], [ "/search", { q => "$dist group:cpan" } ]) {
+        my $res = $self->call($method->[0], $method->[1]);
+        for my $entry (@{$res->{entries}}) {
+            my $info = $self->parse_entry($entry->{body}, $entry->{date}) or next;
+            if ($info->{dist} eq $dist) {
+                return $self->do_inject($info);
+            }
         }
     }
 
