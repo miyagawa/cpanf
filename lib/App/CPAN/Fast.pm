@@ -17,6 +17,7 @@ sub opt_spec {
     return (
         [ "install|i", "install the module" ],
         [ "list|l", "list the recent uploads" ],
+        [ "help|h", "displays usage info" ],
     );
 }
 
@@ -27,6 +28,8 @@ sub execute {
         $self->search($args->[0]);
     } elsif ($opt->{list}) {
         $self->recent;
+    } elsif ($opt->{help} || !@$args) {
+        $self->usage;
     } else {
         $self->install($args);
     }
@@ -42,6 +45,11 @@ sub search {
     my($self, $q) = @_;
     my $res = $self->call("/search", { q => "$q group:cpan" });
     $self->display_results($res);
+}
+
+sub usage {
+    require Pod::Usage;
+    Pod::Usage::pod2usage();
 }
 
 sub install {
