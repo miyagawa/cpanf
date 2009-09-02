@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use App::CPAN::Fast;
+
+App::CPAN::Fast->run;
+
+__END__
+
+=head1 NAME
+
+cpanf - install CPAN modules from fastest mirrors
+
+=head1 SYNOPSIS
+
+  # install Module::Name from the fastest mirror
+  cpanf Module::Name
+
+  # list the recent uploads
+  cpanf -l
+
+  # search the latest uploads for "Catalyst"
+  cpanf -l Catalyst
+
+=head1 DESCRIPTION
+
+C<cpanf> is a command line tool to find, index and download CPAN
+modules from fastest mirrors. It would be useful if you want to
+install modules before it's mirrored to the mirrors near you which
+usually takes a day or two.
+
+This tool utilizes FriendFeed CPAN relatime bot
+(L<http://friendfeed.com/cpan>) to search and query the updates and
+CPAN Testers mirror (L<http://cpan.cpantesters.org/>) to download
+modules.
+
+=head1 AUTHOR
+
+Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<App::CPAN::Fast> L<http://friendfeed.com/cpan>
+
+=cut
+

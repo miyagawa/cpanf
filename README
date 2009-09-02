@@ -1,0 +1,27 @@
+This is Perl module App::CPAN::Fast.
+
+INSTALLATION
+
+App::CPAN::Fast installation is straightforward. If your CPAN shell is set up,
+you should just be able to do
+
+    % cpan App::CPAN::Fast
+
+Download it, unpack it, then build it as per the usual:
+
+    % perl Makefile.PL
+    % make && make test
+
+Then install it:
+
+    % make install
+
+DOCUMENTATION
+
+App::CPAN::Fast documentation is available as in POD. So you can do:
+
+    % perldoc App::CPAN::Fast
+
+to read the documentation online with your favorite pager.
+
+Tatsuhiko Miyagawa
