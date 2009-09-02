@@ -1,5 +1,8 @@
 Revision history for Perl extension App::CPAN::Fast
 
+0.03  Tue Sep  1 23:24:38 PDT 2009
+        - If the found upload is older than 2 days, just use your mirror
+
 0.02  Tue Sep  1 23:06:19 PDT 2009
         - Added -h option
         - Display usage information when there's no arguments

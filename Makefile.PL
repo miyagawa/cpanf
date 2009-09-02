@@ -7,6 +7,7 @@ requires 'App::Cmd', '0.30';
 requires 'JSON', '2.0';
 requires 'URI';
 requires 'LWP';
+requires 'Time::Piece';
 
 install_script 'cpanf';
 
