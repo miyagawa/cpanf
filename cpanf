@@ -29,6 +29,10 @@ modules from fastest mirrors. It would be useful if you want to
 install modules before it's mirrored to the mirrors near you which
 usually takes a day or two.
 
+Note that "fastest mirror" means the mirror that syncs uploaded
+modules from master PAUSE very quickly (almost real-time) and NOT the
+nearest mirror that gives you the max download speed.
+
 This tool utilizes FriendFeed CPAN relatime bot
 (L<http://friendfeed.com/cpan>) to search and query the updates and
 CPAN Testers mirror (L<http://cpan.cpantesters.org/>) to download
