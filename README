@@ -1,27 +1,33 @@
-This is Perl module App::CPAN::Fast.
+NAME
+    cpanf - Query and install CPAN modules realtime from the fresh mirror
 
-INSTALLATION
+SYNOPSIS
+      # install Module::Name from the fresh mirror
+      cpanf Module::Name
 
-App::CPAN::Fast installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+      # list the recent uploads
+      cpanf -l
 
-    % cpan App::CPAN::Fast
+      # search the latest uploads for "Catalyst"
+      cpanf -l Catalyst
 
-Download it, unpack it, then build it as per the usual:
+DESCRIPTION
+    `cpanf' is a command line tool to find, index and download CPAN modules
+    from fresh mirrors. It would be useful if you want to install modules
+    before it's mirrored to the mirrors near you which usually takes a day
+    or two.
 
-    % perl Makefile.PL
-    % make && make test
+    This tool utilizes FriendFeed CPAN relatime bot
+    (http://friendfeed.com/cpan) to search and query the updates and CPAN
+    Testers mirror (http://cpan.cpantesters.org/) to download modules.
 
-Then install it:
+AUTHOR
+    Tatsuhiko Miyagawa <miyagawa@bulknews.net>
 
-    % make install
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-DOCUMENTATION
+SEE ALSO
+    App::CPAN::Fresh http://friendfeed.com/cpan
 
-App::CPAN::Fast documentation is available as in POD. So you can do:
-
-    % perldoc App::CPAN::Fast
-
-to read the documentation online with your favorite pager.
-
-Tatsuhiko Miyagawa

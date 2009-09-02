@@ -20,7 +20,7 @@ inc/Test/Base/Filter.pm
 inc/Test/Builder.pm
 inc/Test/Builder/Module.pm
 inc/Test/More.pm
-lib/App/CPAN/Fast.pm
+lib/App/CPAN/Fresh.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml

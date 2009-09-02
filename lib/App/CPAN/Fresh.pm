@@ -1,4 +1,4 @@
-package App::CPAN::Fast;
+package App::CPAN::Fresh;
 
 use strict;
 use 5.008_001;
@@ -163,11 +163,11 @@ __END__
 
 =head1 NAME
 
-App::CPAN::Fast - backend for I<cpanf> command
+App::CPAN::Fresh - backend for I<cpanf> command
 
 =head1 DESCRIPTION
 
-App::CPAN::Fast is a backend for I<cpanf> command.
+App::CPAN::Fresh is a backend for I<cpanf> command.
 
 =head1 AUTHOR
 

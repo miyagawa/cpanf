@@ -1,6 +1,6 @@
 use inc::Module::Install;
-name 'App-CPAN-Fast';
-all_from 'lib/App/CPAN/Fast.pm';
+name 'App-CPAN-Fresh';
+all_from 'lib/App/CPAN/Fresh.pm';
 
 requires 'CPAN::Inject';
 requires 'App::Cmd', '0.30';

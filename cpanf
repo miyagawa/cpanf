@@ -1,19 +1,19 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use App::CPAN::Fast;
+use App::CPAN::Fresh;
 
-App::CPAN::Fast->run;
+App::CPAN::Fresh->run;
 
 __END__
 
 =head1 NAME
 
-cpanf - Query and install CPAN modules realtime from the fastest (fresh) mirror
+cpanf - Query and install CPAN modules realtime from the fresh mirror
 
 =head1 SYNOPSIS
 
-  # install Module::Name from the fastest mirror
+  # install Module::Name from the fresh mirror
   cpanf Module::Name
 
   # list the recent uploads
@@ -25,13 +25,9 @@ cpanf - Query and install CPAN modules realtime from the fastest (fresh) mirror
 =head1 DESCRIPTION
 
 C<cpanf> is a command line tool to find, index and download CPAN
-modules from fastest mirrors. It would be useful if you want to
+modules from fresh mirrors. It would be useful if you want to
 install modules before it's mirrored to the mirrors near you which
 usually takes a day or two.
-
-Note that "fastest mirror" means the mirror that syncs uploaded
-modules from master PAUSE very quickly (almost real-time) and NOT the
-nearest mirror that gives you the max download speed.
 
 This tool utilizes FriendFeed CPAN relatime bot
 (L<http://friendfeed.com/cpan>) to search and query the updates and
@@ -49,7 +45,7 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<App::CPAN::Fast> L<http://friendfeed.com/cpan>
+L<App::CPAN::Fresh> L<http://friendfeed.com/cpan>
 
 =cut
 
