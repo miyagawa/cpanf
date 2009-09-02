@@ -20,6 +20,8 @@ sub opt_spec {
     return (
         [ "install|i", "install the module" ],
         [ "list|l", "list the recent uploads" ],
+        [ "test|t", "test the dist" ],
+        [ "force|f", "force install" ],
         [ "help|h", "displays usage info" ],
     );
 }
@@ -34,7 +36,7 @@ sub execute {
     } elsif ($opt->{help} || !@$args) {
         $self->usage;
     } else {
-        $self->install($args);
+        $self->handle($opt, $args);
     }
 }
 
@@ -55,8 +57,8 @@ sub usage {
     Pod::Usage::pod2usage(0);
 }
 
-sub install {
-    my($self, $dists) = @_;
+sub handle {
+    my($self, $opt, $dists) = @_;
 
     my @install;
     for my $dist (@$dists) {
@@ -69,9 +71,16 @@ sub install {
         }
     }
 
+    my $method = "install";
+    $method = "test" if $opt->{test};
+
     if (@install) {
         require CPAN;
-        CPAN::Shell->install(@install);
+        if ($opt->{force}) {
+            CPAN::Shell->force($method, @install);
+        } else {
+            CPAN::Shell->$method(@install);
+        }
     }
 }
 
