@@ -1,5 +1,8 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+0.05  Wed Sep  2 02:18:55 PDT 2009
+        - Added -f (force) and -t (test) command line switch
+
 0.04  Wed Sep  2 01:18:08 PDT 2009
         - Rename the dist to App::CPAN::Fresh
 
