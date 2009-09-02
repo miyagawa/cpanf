@@ -173,7 +173,7 @@ __END__
 
 =head1 NAME
 
-App::CPAN::Fresh - backend for I<cpanf> command
+App::CPAN::Fresh - Query and install CPAN modules realtime from the fresh mirror
 
 =head1 DESCRIPTION
 
