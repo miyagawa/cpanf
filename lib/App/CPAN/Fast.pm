@@ -52,7 +52,7 @@ sub search {
 
 sub usage {
     require Pod::Usage;
-    Pod::Usage::pod2usage();
+    Pod::Usage::pod2usage(0);
 }
 
 sub install {
