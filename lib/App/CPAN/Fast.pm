@@ -8,10 +8,13 @@ use base qw(App::Cmd::Simple);
 
 use Carp;
 use CPAN::Inject;
+use Time::Piece;
 use File::Temp;
 use JSON;
 use LWP::UserAgent;
 use URI;
+
+my $duration = 2 * 24 * 60 * 60;
 
 sub opt_spec {
     return (
@@ -55,19 +58,20 @@ sub usage {
 sub install {
     my($self, $dists) = @_;
 
-    my @injected;
+    my @install;
     for my $dist (@$dists) {
         my $path = $self->inject($dist);
         if ($path) {
-            push @injected, $path;
+            push @install, $path;
         } else {
-            print "$dist not found.\n";
+            print "$dist is not found or not in the fresh uploads. Falling back to your mirror.\n";
+            push @install, $dist;
         }
     }
 
-    if (@injected) {
+    if (@install) {
         require CPAN;
-        CPAN::Shell->install(@injected);
+        CPAN::Shell->install(@install);
     }
 }
 
@@ -77,7 +81,7 @@ sub inject {
 
     my $res = $self->call("/search", { q => "$dist group:cpan" });
     for my $entry (@{$res->{entries}}) {
-        my $info = $self->parse_entry($entry->{body}) or next;
+        my $info = $self->parse_entry($entry->{body}, $entry->{date}) or next;
         if ($info->{dist} eq $dist) {
             return $self->do_inject($info);
         }
@@ -103,13 +107,19 @@ sub do_inject {
 sub display_results {
     my($self, $res) = @_;
     for my $entry (@{$res->{entries}}) {
-        my $info = $self->parse_entry($entry->{body}) or next;
+        my $info = $self->parse_entry($entry->{body}, $entry->{date}) or next;
         printf "%s-%s (%s)\n", $info->{dist}, $info->{version}, $info->{author};
     }
 }
 
 sub parse_entry {
-    my($self, $body) = @_;
+    my($self, $body, $date) = @_;
+
+    my $time = Time::Piece->strptime($date, "%Y-%m-%dT%H:%M:%SZ") or return;
+    if (time - $time->epoch > $duration) {
+        # entry found, but it's old
+        return;
+    }
 
     if ($body =~ /^([\w\-]+) ([0-9\._]*) by (.+?) - <a.*href="(http:.*?\.tar\.gz)"/) {
         return {
