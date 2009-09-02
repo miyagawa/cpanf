@@ -1,5 +1,9 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+0.06  Wed Sep  2 11:23:51 PDT 2009
+        - Make the search more robust to work around when FriendFeed search index it not up-to-date
+        - Added -fi and -t to the usage doc
+
 0.05  Wed Sep  2 02:18:55 PDT 2009
         - Added -f (force) and -t (test) command line switch
 
