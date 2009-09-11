@@ -1,5 +1,8 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+0.07  Fri Sep 11 16:15:25 JST 2009
+        - Added -d option to install devel version of the module.
+
 0.06  Wed Sep  2 11:23:51 PDT 2009
         - Make the search more robust to work around when FriendFeed search index it not up-to-date
         - Added -fi and -t to the usage doc

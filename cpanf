@@ -19,6 +19,9 @@ cpanf - Query and install CPAN modules realtime from the fresh mirror
   # force install
   cpanf -fi Module::Name
 
+  # install devel releases too
+  cpan -di Module::Name
+
   # test
   cpanf -t Module::Name
 
