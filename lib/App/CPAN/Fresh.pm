@@ -22,6 +22,7 @@ sub opt_spec {
         [ "list|l", "list the recent uploads" ],
         [ "test|t", "test the dist" ],
         [ "force|f", "force install" ],
+        [ "devel|d", "install even if it's a devel release" ],
         [ "help|h", "displays usage info" ],
     );
 }
@@ -62,7 +63,7 @@ sub handle {
 
     my @install;
     for my $dist (@$dists) {
-        my $path = $self->inject($dist);
+        my $path = $self->inject($dist, $opt);
         if ($path) {
             push @install, $path;
         } else {
@@ -85,7 +86,7 @@ sub handle {
 }
 
 sub inject {
-    my($self, $dist) = @_;
+    my($self, $dist, $opt) = @_;
     $dist =~ s/::/-/g;
 
     for my $method ([ "/feed/cpan" ], [ "/search", { q => "$dist group:cpan" } ]) {
@@ -93,6 +94,10 @@ sub inject {
         for my $entry (@{$res->{entries}}) {
             my $info = $self->parse_entry($entry->{body}, $entry->{date}) or next;
             if ($info->{dist} eq $dist) {
+                if ($info->{version} =~ /_/ && !$opt->{devel}) {
+                    warn "$info->{dist}-$info->{version} found: No -d option, skipping\n";
+                    return;
+                }
                 return $self->do_inject($info);
             }
         }
