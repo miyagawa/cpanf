@@ -7,7 +7,6 @@ our $VERSION = '0.07';
 use base qw(App::Cmd::Simple);
 
 use Carp;
-use CPAN::Inject;
 use Time::Piece;
 use File::Temp;
 use JSON;
@@ -23,6 +22,7 @@ sub opt_spec {
         [ "test|t", "test the dist" ],
         [ "force|f", "force install" ],
         [ "devel|d", "install even if it's a devel release" ],
+        [ "minus|m", "use cpanminus" ],
         [ "help|h", "displays usage info" ],
     );
 }
@@ -76,11 +76,15 @@ sub handle {
     $method = "test" if $opt->{test};
 
     if (@install) {
-        require CPAN;
-        if ($opt->{force}) {
-            CPAN::Shell->force($method, @install);
+        if ($opt->{minus}) {
+            system "cpanm", ($opt->{force} ? "-f" : ()), @install;
         } else {
-            CPAN::Shell->$method(@install);
+            require CPAN;
+            if ($opt->{force}) {
+                CPAN::Shell->force($method, @install);
+            } else {
+                CPAN::Shell->$method(@install);
+            }
         }
     }
 }
@@ -98,7 +102,7 @@ sub inject {
                     warn "$info->{dist}-$info->{version} found: No -d option, skipping\n";
                     return;
                 }
-                return $self->do_inject($info);
+                return $self->do_inject($info, $opt);
             }
         }
     }
@@ -107,7 +111,11 @@ sub inject {
 }
 
 sub do_inject {
-    my($self, $info) = @_;
+    my($self, $info, $opt) = @_;
+
+    if ($opt->{minus}) {
+        return $info->{url};
+    }
 
     my $dir = File::Temp::tempdir(CLEANUP => 1);
     my $local = "$dir/$info->{dist}-$info->{version}.tar.gz";
@@ -118,6 +126,7 @@ sub do_inject {
         croak "Fetching $info->{url} failed: ", $res->status_line;
     }
 
+    require CPAN::Inject;
     CPAN::Inject->from_cpan_config->add(file => $local);
 }
 

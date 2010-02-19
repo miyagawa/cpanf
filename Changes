@@ -1,5 +1,8 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+0.08  Fri Feb 19 15:19:26 PST 2010
+        - Added --minus|-m option to use cpanminus http://bit.ly/cpanm
+
 0.07  Fri Sep 11 16:15:25 JST 2009
         - Added -d option to install devel version of the module.
 
