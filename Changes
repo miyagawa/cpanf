@@ -1,5 +1,8 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+0.09  Tue Jun 22 17:37:35 EDT 2010
+        - Fixed -h docs 
+
 0.08  Fri Feb 19 15:19:26 PST 2010
         - Added --minus|-m option to use cpanminus http://bit.ly/cpanm
 

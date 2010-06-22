@@ -20,7 +20,10 @@ cpanf - Query and install CPAN modules realtime from the fresh mirror
   cpanf -fi Module::Name
 
   # install devel releases too
-  cpan -di Module::Name
+  cpanf -di Module::Name
+
+  # use cpanm
+  cpanf -m Module::NAme
 
   # test
   cpanf -t Module::Name
