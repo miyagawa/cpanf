@@ -2,7 +2,7 @@ package App::CPAN::Fresh;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 use base qw(App::Cmd::Simple);
 
