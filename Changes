@@ -1,5 +1,8 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+0.10  Wed Feb 16 10:15:17 PST 2011
+        - Support -TRIAL releases
+
 0.09  Tue Jun 22 17:37:35 EDT 2010
         - Fixed -h docs 
 
