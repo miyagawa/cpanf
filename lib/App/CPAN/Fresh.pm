@@ -2,7 +2,7 @@ package App::CPAN::Fresh;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 use base qw(App::Cmd::Simple);
 
@@ -147,7 +147,7 @@ sub parse_entry {
         return;
     }
 
-    if ($body =~ /^([\w\-]+) ([0-9\._]*(?:-TRIAL)?) by (.+?) - <a.*href="(http:.*?\.tar\.gz)"/) {
+    if ($body =~ /^([\w\-]+) (v?[0-9\._]*(?:-TRIAL)?) by (.+?) - <a.*href="(http:.*?\.tar\.gz)"/) {
         return {
             dist    => $1,
             version => $2,
