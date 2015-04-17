@@ -1,0 +1,70 @@
+{
+   "abstract" : "Query and install CPAN modules realtime from the fresh mirror",
+   "author" : [
+      "Tatsuhiko Miyagawa <miyagawa@bulknews.net>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 5.035, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150001",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : 2
+   },
+   "name" : "App-CPAN-Fresh",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build::Tiny" : "0.039"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Dist::Milla" : "v1.0.15",
+            "Test::Pod" : "1.41"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "App::Cmd" : "0.30",
+            "CPAN::Inject" : "0",
+            "Filter::Util::Call" : "0",
+            "JSON" : "2.0",
+            "LWP" : "0",
+            "Time::Piece" : "0",
+            "URI" : "0",
+            "perl" : "5.008001"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/miyagawa/cpanf/issues"
+      },
+      "homepage" : "https://github.com/miyagawa/cpanf",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/miyagawa/cpanf.git",
+         "web" : "https://github.com/miyagawa/cpanf"
+      }
+   },
+   "version" : "0.11"
+}
+

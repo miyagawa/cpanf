@@ -1,5 +1,7 @@
 Revision history for Perl extension App::CPAN::Fresh
 
+{{$NEXT}}
+
 0.11  Fri Nov  9 09:12:21 PST 2012
         - Support v-string versions
 
