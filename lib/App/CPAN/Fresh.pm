@@ -191,6 +191,10 @@ __END__
 
 App::CPAN::Fresh - Query and install CPAN modules realtime from the fresh mirror
 
+=head1 DEPRECATION
+
+B<This module does not work anymore since FriendFeed has been shutdown.> You can use C<cpanm>'s C<--metacpan> option to enable MetaCPAN API search which can give you recently updated module in almost realtime. There's also C<--dev> option which allows you to search for development releases.
+
 =head1 DESCRIPTION
 
 App::CPAN::Fresh is a backend for I<cpanf> command.
